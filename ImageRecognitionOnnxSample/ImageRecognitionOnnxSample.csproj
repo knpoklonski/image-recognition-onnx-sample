@@ -23,6 +23,9 @@
     <None Update="carbonara.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="cat.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="labels.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

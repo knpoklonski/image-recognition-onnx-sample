@@ -11,7 +11,9 @@ using System.Linq;
 
 namespace ImageRecognitionOnnxSample
 {
-    public class SqueezeNetOnnxClassification
+
+    //ToDO
+    //public class SqueezeNetOnnxClassification
     {
         public const string OutputName = "softmaxout_1";
         private const int ImageHeight = 224;

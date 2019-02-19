@@ -5,6 +5,7 @@ using Microsoft.ML.ImageAnalytics;
 using Microsoft.ML.Transforms;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.ML.Transforms.Projections;
 
 namespace ImageRecognitionOnnxSample
 {
@@ -33,13 +34,14 @@ namespace ImageRecognitionOnnxSample
 
             var pipeline = new ImageLoadingEstimator(_mlContext, string.Empty, ("ImageData", "ImagePath"))
               .Append(new ImageResizingEstimator(_mlContext, "ImageResized", ImageWidth, ImageHeight, "ImageData"))
-              .Append(new ImagePixelExtractingEstimator(_mlContext, "input", "ImageResized", colors: ImagePixelExtractorTransformer.ColorBits.Rgb, interleave: true, offset: -128f, scale: 1, asFloat: true))
+              .Append(new ImagePixelExtractingEstimator(_mlContext, "ImagePixels", "ImageResized", colors: ImagePixelExtractorTransformer.ColorBits.Rgb, interleave:true, asFloat: true))
+              .Append(new LpNormalizingEstimator(_mlContext, "input", "ImagePixels", normKind: LpNormalizingEstimatorBase.NormalizerKind.StdDev, substractMean: true))
               .Append(new TensorFlowEstimator(_mlContext, new string[] { @"MobilenetV2/Predictions/Reshape_1" }, new string[] { "input" }, _modelFilePath))
               .Append(new CustomMappingEstimator<MovileNetTensorflowPrediction, ImagePrediction>(_mlContext, contractName: "MobileNetExtractor",
                     mapAction: (networkResult, prediction) =>
                     {
                         prediction.Estimate = networkResult.Output.Max();
-                        prediction.Index = networkResult.Output.ToList().IndexOf(prediction.Estimate);
+                        prediction.Index = networkResult.Output.ToList().IndexOf(prediction.Estimate) - 1;
                         prediction.Label = _labels[prediction.Index];
                     }));
 
