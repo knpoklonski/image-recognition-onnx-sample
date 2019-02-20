@@ -26,12 +26,12 @@ namespace ImageRecognitionOnnxSample
             var predictionOnnx = imageOnnxClassifier.Predict(new ImageData { ImagePath = imagePath });
             Console.WriteLine("MobileNet onnx model top prediction {0} {1}, with estimate {2}", predictionOnnx.Index, predictionOnnx.Label, predictionOnnx.Estimate);
 
-            //Results for ONNX Squeeze model
-            var onnxSqueezeNetModelPath = Path.Combine(Directory.GetCurrentDirectory(), "squeezenet.onnx");
-            var squeezeNetOnnx = new SqueezeNetOnnxClassification(new Microsoft.ML.MLContext(), onnxSqueezeNetModelPath, labels);
-            var squeezeNetOnnxClassifier = squeezeNetOnnx.CreateClassifier();
-            var predictionSqueezeNet = squeezeNetOnnxClassifier.Predict(new ImageData { ImagePath = imagePath });
-            Console.WriteLine("SqueezeNet onnx model top prediction {0} {1}, with estimate {2}", predictionSqueezeNet.Index, predictionSqueezeNet.Label, predictionSqueezeNet.Estimate);
+            //ToDo Results for ONNX Squeeze model
+            //var onnxSqueezeNetModelPath = Path.Combine(Directory.GetCurrentDirectory(), "squeezenet.onnx");
+            //var squeezeNetOnnx = new SqueezeNetOnnxClassification(new Microsoft.ML.MLContext(), onnxSqueezeNetModelPath, labels);
+            //var squeezeNetOnnxClassifier = squeezeNetOnnx.CreateClassifier();
+            //var predictionSqueezeNet = squeezeNetOnnxClassifier.Predict(new ImageData { ImagePath = imagePath });
+            //Console.WriteLine("SqueezeNet onnx model top prediction {0} {1}, with estimate {2}", predictionSqueezeNet.Index, predictionSqueezeNet.Label, predictionSqueezeNet.Estimate);
 
             Console.ReadKey();
         }

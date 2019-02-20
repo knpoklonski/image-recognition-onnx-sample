@@ -9,6 +9,7 @@ using static Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer;
 
 namespace ImageRecognitionOnnxSample
 {
+    //ToDo check results
     public class SqueezeNetOnnxClassification
     {
         public const string OutputName = "softmaxout_1";
