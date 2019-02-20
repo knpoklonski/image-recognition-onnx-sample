@@ -17,13 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="car.jpg">
+    <None Update="images\car.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="carbonara.jpg">
+    <None Update="images\carbonara.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="cat.jpg">
+    <None Update="images\cat.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="labels.txt">
@@ -32,25 +32,22 @@
     <None Update="mobilenetv2-1.0.onnx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="mobilenet_v1_1.0_224_frozen.pb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="mobilenet_v2_1.4_224_frozen.pb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="panda.jpg">
+    <None Update="images\panda.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="panda2.jpg">
+    <None Update="images\panda2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="panda21.jpg">
+    <None Update="images\panda21.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="panda22.jpg">
+    <None Update="images\panda22.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="panda23.jpg">
+    <None Update="images\panda23.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="squeezenet.onnx">

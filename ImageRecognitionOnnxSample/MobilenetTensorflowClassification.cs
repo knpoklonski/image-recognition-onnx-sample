@@ -41,7 +41,7 @@ namespace ImageRecognitionOnnxSample
                     mapAction: (networkResult, prediction) =>
                     {
                         prediction.Estimate = networkResult.Output.Max();
-                        prediction.Index = networkResult.Output.ToList().IndexOf(prediction.Estimate) - 1;
+                        prediction.Index = networkResult.Output.ToList().IndexOf(prediction.Estimate) - 1; //-1 because result contains 1001
                         prediction.Label = _labels[prediction.Index];
                     }));
 
