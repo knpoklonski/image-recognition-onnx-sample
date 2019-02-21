@@ -5,7 +5,7 @@ using Microsoft.ML.ImageAnalytics;
 using Microsoft.ML.Transforms;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.ML.Transforms.Projections;
+using static Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer;
 
 namespace ImageRecognitionOnnxSample
 {
@@ -33,8 +33,8 @@ namespace ImageRecognitionOnnxSample
             var data = _mlContext.Data.ReadFromEnumerable(new List<ImageData>());
 
             var pipeline = new ImageLoadingEstimator(_mlContext, string.Empty, ("ImageData", "ImagePath"))
-              .Append(new ImageResizingEstimator(_mlContext, "ImageResized", ImageWidth, ImageHeight, "ImageData"))
-              .Append(new ImagePixelExtractingEstimator(_mlContext, "input", "ImageResized", colors: ImagePixelExtractorTransformer.ColorBits.Rgb, interleave:true, asFloat: true, offset: 128f, scale: 1/255f))
+              .Append(_mlContext.Transforms.Resize("ImageResized", imageWidth: ImageWidth, imageHeight: ImageHeight, inputColumnName: "ImageData"))
+              .Append(_mlContext.Transforms.ExtractPixels(new ColumnInfo("input", "ImageResized", colors: ColorBits.Rgb, interleave:true, asFloat: true, offset: 128f, scale: 1 /255f)))
               .Append(new TensorFlowEstimator(_mlContext, new string[] { @"MobilenetV2/Predictions/Reshape_1" }, new string[] { "input" }, _modelFilePath))
               .Append(new CustomMappingEstimator<MovileNetTensorflowPrediction, ImagePrediction>(_mlContext, contractName: "MobileNetExtractor",
                     mapAction: (networkResult, prediction) =>
